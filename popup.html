@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100&display=swap" rel="stylesheet">
+    <title>Snibbet</title>
+    <style>
+        html, body {
+            width: 350px;
+            margin: 0px !important;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 25px;
+            height: 25px;
+            margin-top: 5px;
+        }
+        .titleExtension {
+            font-family: 'Urbanist', sans-serif;
+            color: #2345b6;
+            font-size: xx-large;
+            text-align: center;
+        }
+        section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .spacer {
+            aspect-ratio: 350/150;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            border-bottom: 0px;
+            margin-top: -30px;
+        }
+        .layer1 {
+            background-image: url('./layer1.svg');
+        }
+        section {
+            background-color: #0060a4;
+            height: 300px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/logo-25x25.png" class="center">
+        <h1 class="titleExtension">Snibbet Code</h1>
+    </header>
+    <div class="spacer layer1"></div>
+    <section></section>
+</body>
+</html>

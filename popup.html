@@ -7,7 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;300&display=swap" rel="stylesheet">
     <title>Snibbet</title>
     <style>
         html, body {
@@ -51,6 +51,37 @@
             background-color: #0060a4;
             height: 300px;
         }
+        nav ul {
+            height: 250px;
+            width: 250px;
+            overflow: hidden;
+            overflow-y: scroll;
+            background-color: #01518a;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #024677;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb{
+            border-radius: 5px;
+            background: #7474BF;
+        }
+        ::-webkit-scrollbar-thumb:hover{
+            background: #6969ac;
+        }
+        .smaller-text {
+            color: #FFF;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 300;
+            font-size: medium;
+            margin-top: -10px;
+            margin-bottom: -3px;
+        }
+
         
     </style>
 </head>
@@ -60,6 +91,12 @@
         <h1 class="titleExtension">Snibbet Code</h1>
     </header>
     <div class="spacer layer1"></div>
-    <section></section>
+    <section>
+        <h1 class="smaller-text">&lt; Your Saved Snippets &gt;</h1>
+        <nav>
+            <ul>
+            </ul>
+        </nav>
+    </section>
 </body>
 </html>

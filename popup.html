@@ -51,13 +51,14 @@
             background-color: #0060a4;
             height: 300px;
         }
-        nav ul {
+        ul {
             height: 250px;
             width: 250px;
             overflow: hidden;
             overflow-y: scroll;
             background-color: #01518a;
             border-radius: 5px;
+            list-style: inside;
         }
         ::-webkit-scrollbar {
             width: 10px;
@@ -81,6 +82,27 @@
             margin-top: -10px;
             margin-bottom: -3px;
         }
+        .snippetBox {
+            border-radius: 5px;
+            display: inline-block;
+            margin: auto;
+            width: 300px;
+            height: auto;
+            margin-top: 10px;
+            background-color: #FFF;
+            border-radius: 5px;;
+            padding: 5px 10px 10px 10px
+        }
+        .holder {
+            box-sizing: inherit;
+            background-color: rgb(230, 228, 228);
+            padding: 3px;
+            border-radius: 3px;
+        }
+        code {
+            word-break: break-all;
+            white-space: normal;
+        }
 
         
     </style>
@@ -94,10 +116,8 @@
     <div class="spacer layer1"></div>
     <section>
         <h1 class="smaller-text">&lt; Your Saved Snippets &gt;</h1>
-        <nav>
-            <ul class="listSnippets">
-            </ul>
-        </nav>
+        <ul class="listSnippets">
+        </ul>
     </section>
 </body>
 </html>

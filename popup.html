@@ -53,12 +53,16 @@
         }
         ul {
             height: 250px;
-            width: 250px;
-            overflow: hidden;
+            width: 300px;
+            overflow: auto;
             overflow-y: scroll;
             background-color: #01518a;
             border-radius: 5px;
-            list-style: inside;
+            position:relative;
+            display: inline-block;  
+            list-style: none;
+            margin: auto;
+            padding: 0;
         }
         ::-webkit-scrollbar {
             width: 10px;
@@ -83,14 +87,13 @@
             margin-bottom: -3px;
         }
         .snippetBox {
-            border-radius: 5px;
             display: inline-block;
-            margin: auto;
-            width: 300px;
+            width: 250px;
             height: auto;
             margin-top: 10px;
+            margin-left: 10px;
             background-color: #FFF;
-            border-radius: 5px;;
+            border-radius: 5px;
             padding: 5px 10px 10px 10px
         }
         .holder {

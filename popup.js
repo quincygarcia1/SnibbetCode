@@ -16,7 +16,7 @@ chrome.storage.sync.get(null, function(items){
 })
 
 function createSection(link, Title, Snippet) {
-    var new_section = document.createElement("section")
+    var new_section = document.createElement("li")
     var titleScript = document.createElement("b")
     var codeHolder = document.createElement("pre")
     var codeSnippet = document.createElement("code")

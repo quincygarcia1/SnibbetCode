@@ -55,7 +55,7 @@ function handleButtonPress() {
         var snippetTitle = document.getElementsByClassName("s-searchbox")[0].value
         var obj = {}
         obj[siteLink] = [snippetTitle, selectedSnippet]
-        chrome.storage.sync.set(obj, function(){console.log(selectedSnippet)});
+        chrome.storage.sync.set(obj);
     }
 }
 

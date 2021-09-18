@@ -20,6 +20,7 @@ setup();
 
 function createSection(link, Title, Snippet, keyValue) {
     var new_section = document.createElement("li")
+    new_section.id = keyValue
     var titleScript = document.createElement("b")
     var codeHolder = document.createElement("pre")
     var codeSnippet = document.createElement("code")
@@ -48,8 +49,8 @@ function ButtonCreator(classTitle2, inner, appendsection, openLink, keyValue){
     }else if(classTitle2 === "controlbuttons removeBtn"){
         newBtn.addEventListener("click", function(){
             chrome.storage.sync.remove(keyValue)
-            document.getElementsByTagName('ul').innerHTML = ""
-            setup()
+            l = document.getElementsByTagName("ul")[0]
+            l.removeChild(document.getElementById(keyValue))
         })
     }
     appendsection.appendChild(newBtn)

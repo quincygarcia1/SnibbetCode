@@ -3,7 +3,7 @@ function Setup(){
     chrome.storage.sync.get(null, function(items){
         for (key in items) {
             // "Snibbit - " is the identifier for elements of the Chrome extension
-            if (key.includes("Snibbit - ")){
+            if (key.includes("Snibbet - ")){
                 var cutLink = key.slice(10);
                 var titleValue;
                 if (items[key][0] === ""){

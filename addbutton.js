@@ -54,8 +54,7 @@ function HandleButtonPress() {
     if (selectedSnippet == ""){
         alert("Please highlight a snippet of text")
     } else {
-        alert("clicked")
-        var siteLink = "Snibbet - " + window.location.href
+        var siteLink = "Snibbit - " + window.location.href
         var snippetTitle = document.getElementsByClassName("s-searchbox")[0].value
         var obj = {}
         obj[siteLink] = [snippetTitle, selectedSnippet]

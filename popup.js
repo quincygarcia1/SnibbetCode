@@ -3,7 +3,7 @@ function Setup(){
     chrome.storage.sync.get(null, function(items){
         for (key in items) {
             // "Snibbit - " is the identifier for elements of the Chrome extension
-            if (key.includes("Snibbet - ")){
+            if (key.includes("Snibbit - ")){
                 var cutLink = key.slice(10);
                 var titleValue;
                 if (items[key][0] === ""){
@@ -52,8 +52,8 @@ function ButtonCreator(classTitle2, inner, appendsection, openLink, keyValue) {
     }else if(classTitle2 === "controlbuttons removeBtn"){
         newBtn.addEventListener("click", function(){
             chrome.storage.sync.remove(keyValue)
-            listIndex = document.getElementsByTagName("ul")[0]
-            listIndex.removeChild(document.getElementById(keyValue))
+            l = document.getElementsByTagName("ul")[0]
+            l.removeChild(document.getElementById(keyValue))
         })
     }
     appendsection.appendChild(newBtn)

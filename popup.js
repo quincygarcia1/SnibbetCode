@@ -1,5 +1,5 @@
 function Setup(){
-    // Search Chrome storage for all link-snippet pairs that should be displayed on the popup
+    // Search Chrome storage for all text-"snippet" pairs that should be displayed on the popup
     chrome.storage.sync.get(null, function(items){
         for (key in items) {
             // "Snibbit - " is the identifier for elements of the Chrome extension
@@ -21,6 +21,7 @@ function Setup(){
 }
 Setup();
 
+// Creates the tabs of snippet informationt that populates the ul element
 function CreateSection(Snippet, Title, link, keyValue) {
     var newSection = document.createElement("li")
     newSection.id = keyValue

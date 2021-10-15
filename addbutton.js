@@ -54,10 +54,12 @@ function HandleButtonPress() {
     if (selectedSnippet == ""){
         alert("Please highlight a snippet of text")
     } else {
-        var siteLink = "Snibbit - " + window.location.href
+        let finalSnippet = "Snibbit - " + selectedSnippet
+        console.log(finalSnippet)
+        var siteLink = window.location.href
         var snippetTitle = document.getElementsByClassName("s-searchbox")[0].value
         var obj = {}
-        obj[siteLink] = [snippetTitle, selectedSnippet]
+        obj[finalSnippet] = [snippetTitle, siteLink]
         chrome.storage.sync.set(obj);
         alert("Snippet Saved")
     }

@@ -34,10 +34,10 @@ function CreateSection(Snippet, Title, link, keyValue) {
     ButtonCreator("controlbuttons removeBtn", "Remove", buttonDiv, link, keyValue)
     ButtonCreator("controlbuttons goToBtn", "Go To Source", buttonDiv, link, keyValue)
     codeHolder.className = "holder"
-    codeHolder.appendChild(codeSnippet)
     newSection.className = 'snippetBox'
     titleScript.innerHTML = Title
     codeSnippet.innerHTML = Snippet
+    codeHolder.appendChild(codeSnippet)
     newSection.appendChild(titleScript)
     newSection.appendChild(codeHolder)
     newSection.appendChild(buttonDiv)

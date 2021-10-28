@@ -28,8 +28,10 @@ function AddToEl(generalEl, listOfEl) {
 var btn = document.createElement("button");
 btn.addEventListener("click", HandleButtonPress);
 CreateBasics("Snibbit", "gradient-button s-button", btn)
+
 var box = document.createElement("body");
 box.className = "s-box"
+
 var bigText = document.createElement("h1");
 CreateBasics("Snibbit Code", "s-title", bigText)
 var logo = document.createElement("img")
@@ -37,6 +39,11 @@ logo.src = chrome.runtime.getURL("Images/logo-25x25.png")
 var boxHead = document.createElement("header")
 AddToEl(boxHead, [bigText, logo])
 AddToEl(box, [boxHead])
+
+var subHeader = document.createElement("small")
+subHeader.innerHTML = "Highlight a snippet"
+AddToEl(box, [subHeader])
+
 var inline = document.createElement("div");
 inline.className = 'parent inline'
 var search = document.createElement('input')
@@ -55,12 +62,15 @@ function HandleButtonPress() {
         alert("Please highlight a snippet of text")
     } else {
         let finalSnippet = "Snibbit - " + selectedSnippet
-        console.log(finalSnippet)
         var siteLink = window.location.href
         var snippetTitle = document.getElementsByClassName("s-searchbox")[0].value
         var obj = {}
         obj[finalSnippet] = [snippetTitle, siteLink]
-        chrome.storage.sync.set(obj);
+        try {
+            chrome.storage.sync.set(obj);
+        } catch(err){
+            alert("Please refesh the page and try again.")
+        }
         alert("Snippet Saved")
     }
 }

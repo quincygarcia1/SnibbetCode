@@ -24,36 +24,41 @@ function AddToEl(generalEl, listOfEl) {
     }
 }
 
-// Create html elements for the on-page popup
-var btn = document.createElement("button");
-btn.addEventListener("click", HandleButtonPress);
-CreateBasics("Snibbit", "gradient-button s-button", btn)
+function establishElements() {
+    // Create html elements for the on-page popup
+    var btn = document.createElement("button");
+    btn.addEventListener("click", HandleButtonPress);
+    CreateBasics("Snibbit", "gradient-button s-button", btn)
 
-var box = document.createElement("body");
-box.className = "s-box"
+    var box = document.createElement("body");
+    box.className = "s-box"
 
-var bigText = document.createElement("h1");
-CreateBasics("Snibbit Code", "s-title", bigText)
-var logo = document.createElement("img")
-logo.src = chrome.runtime.getURL("Images/logo-25x25.png")
-var boxHead = document.createElement("header")
-AddToEl(boxHead, [bigText, logo])
-AddToEl(box, [boxHead])
+    var bigText = document.createElement("h1");
+    CreateBasics("Snibbit Code", "s-title", bigText)
+    var logo = document.createElement("img")
+    logo.src = chrome.runtime.getURL("Images/logo-25x25.png")
+    var boxHead = document.createElement("header")
+    AddToEl(boxHead, [bigText, logo])
+    AddToEl(box, [boxHead])
 
-var subHeader = document.createElement("small")
-subHeader.innerHTML = "Highlight a snippet"
-AddToEl(box, [subHeader])
+    var subHeader = document.createElement("small")
+    subHeader.className = "infotext"
+    subHeader.innerHTML = "Highlight a snippet"
+    AddToEl(box, [subHeader])
 
-var inline = document.createElement("div");
-inline.className = 'parent inline'
-var search = document.createElement('input')
-search.type = "text"
-search.placeholder = "<title snippet>"
-search.name = "search"
-search.className = "child s-searchbox"
-AddToEl(inline, [btn, search])
-AddToEl(box, [inline])
-document.getElementsByTagName("header")[0].appendChild(box)
+    var inline = document.createElement("div");
+    inline.className = 'parent inline'
+    var search = document.createElement('input')
+    search.type = "text"
+    search.placeholder = "<title snippet>"
+    search.name = "search"
+    search.className = "child s-searchbox"
+    AddToEl(inline, [btn, search])
+    AddToEl(box, [inline])
+    document.getElementsByTagName("header")[0].appendChild(box)
+}
+
+establishElements()
 
 // Stores URL, snippet content and an optinal assigned title
 function HandleButtonPress() {
@@ -85,3 +90,18 @@ function GetSelectionText() {
     }
     return text;
 }
+
+function addSubheader(e) {
+    var t = GetSelectionText()
+    var element = document.getElementsByClassName("infotext")[0];
+    element.style.WebkitTransition = 'opacity 1s';
+    if (t != "") {
+        element.style.opacity = "0";
+        element.style.filter  = 'alpha(opacity=0)';
+    } else {
+        element.style.opacity = "1";
+        element.style.filter  = 'alpha(opacity=100)';
+    }
+}
+
+document.onmouseup = addSubheader;

@@ -73,12 +73,13 @@ function HandleButtonPress() {
         obj[finalSnippet] = [snippetTitle, siteLink]
         try {
             chrome.storage.sync.set(obj);
+            alert("Snippet Saved")
         } catch(err){
             alert("Please refesh the page and try again.")
         }
-        alert("Snippet Saved")
     }
 }
+
 
 // Function to get and store highlighted text
 function GetSelectionText() {
@@ -100,8 +101,9 @@ function addSubheader(e) {
         element.style.filter  = 'alpha(opacity=0)';
     } else {
         element.style.opacity = "1";
-        element.style.filter  = 'alpha(opacity=100)';
+        element.style.filter  = 'alpha(opacity=80)';
     }
 }
 
+console.log(document.getElementsByClassName("inner-content clearfix")[0].innerText)
 document.onmouseup = addSubheader;

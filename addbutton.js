@@ -71,13 +71,52 @@ function HandleButtonPress() {
         var snippetTitle = document.getElementsByClassName("s-searchbox")[0].value
         var obj = {}
         obj[finalSnippet] = [snippetTitle, siteLink]
+        
         try {
             chrome.storage.sync.set(obj);
             alert("Snippet Saved")
         } catch(err){
             alert("Please refesh the page and try again.")
         }
+
+        var grabbedKeys = findKeywords(selectedSnippet)
+
+        var allKeys = Object.keys(grabbedKeys)
+
+        for (let i = 0; i < allKeys.length; i++) {
+            chrome.storage.sync.get("SKey - " + allKeys[i], function(items){
+                var keyObj = {}
+                if (items == null){
+                    alert("not there")
+                    keyObj["SKey - " + allKeys[i]] = grabbedKeys[allKeys[i]]
+                } else {
+                    alert("there");
+                    console.log("SKey - " + allKeys[i])
+                    keyObj["SKey - " + allKeys[i]] = grabbedKeys[allKeys[i]] + items["SKey - " + allKeys[i]]
+                }
+                chrome.storage.sync.set(keyObj)
+                console.log(keyObj)
+            })
+        }
+
     }
+}
+
+function findKeywords(section) {
+    let words = section.split(" ")
+    var keywords = {}
+    let keywordsTemplate = new RegExp('[a-zA-Z_]+(([(][a-zA-Z_]*[)]){1}|([.](([a-zA-Z_*]+)([(][a-zA-Z_0-9",]+[)])?){1}))[;]?$')
+    for (let i = 0; i < words.length; i ++) {
+        if (keywordsTemplate.test(words[i])){
+            if (words[i] in keywords){
+                keywords[words[i]] += 1
+            } else {
+                keywords[words[i]] = 1;
+            }
+            
+        }
+    }
+    return keywords
 }
 
 
@@ -105,5 +144,11 @@ function addSubheader(e) {
     }
 }
 
-console.log(document.getElementsByClassName("inner-content clearfix")[0].innerText)
 document.onmouseup = addSubheader;
+
+function checkForKeyWord(Text, keyWord){
+    if ((Text.textContent || Text.innerText).indexOf(keyWord) > -1) {
+        return true
+    }
+    return false
+}

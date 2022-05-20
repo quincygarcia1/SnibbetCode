@@ -3,18 +3,15 @@ function Setup(){
     chrome.storage.sync.get(null, function(items){
         for (key in items) {
             // "Snibbit - " is the identifier for elements of the Chrome extension
-            if (key.includes("Snibbit - ")){
-                console.log(key)
-                var cutText = key.slice(10);
-                var titleValue;
+            var cutText = key;
+            var titleValue;
+            if (Array.isArray(items[key]) && items[key].length == 3 && items[key][2] == "Snibbit"){
                 if (items[key][0] === ""){
                     titleValue = "#NO_TITLE "
                 } else {
                     titleValue = items[key][0] + " "
                 }
                 CreateSection(cutText, titleValue, items[key][1], key)
-            } else {
-                //pass
             }
         }
     })

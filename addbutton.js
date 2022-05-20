@@ -18,6 +18,9 @@ function CreateBasics(htmlName, classTitle, el) {
     el.className = classTitle
     el.innerHTML = htmlName
 }
+
+
+
 function AddToEl(generalEl, listOfEl) {
     for (let i = 0; i < listOfEl.length; i++) {
         generalEl.appendChild(listOfEl[i]);
@@ -65,12 +68,15 @@ function HandleButtonPress() {
     var selectedSnippet = GetSelectionText();
     if (selectedSnippet == ""){
         alert("Please highlight a snippet of text")
-    } else {
-        let finalSnippet = "Snibbit - " + selectedSnippet
+    } else if (selectedSnippet.length > 150){
+        alert("Please try to save a smaller snippet")
+    }
+    else {
+        let finalSnippet = selectedSnippet
         var siteLink = window.location.href
         var snippetTitle = document.getElementsByClassName("s-searchbox")[0].value
         var obj = {}
-        obj[finalSnippet] = [snippetTitle, siteLink]
+        obj[finalSnippet] = [snippetTitle, siteLink, "Snibbit"]
         
         try {
             chrome.storage.sync.set(obj);
@@ -86,7 +92,8 @@ function HandleButtonPress() {
         for (let i = 0; i < allKeys.length; i++) {
             chrome.storage.sync.get("SKey - " + allKeys[i], function(items){
                 var keyObj = {}
-                if (items == null){
+                console.log(items)
+                if (Object.keys(items).length == 0){
                     alert("not there")
                     keyObj["SKey - " + allKeys[i]] = grabbedKeys[allKeys[i]]
                 } else {
@@ -117,6 +124,10 @@ function findKeywords(section) {
         }
     }
     return keywords
+}
+
+function initializeKeywords(){
+    
 }
 
 

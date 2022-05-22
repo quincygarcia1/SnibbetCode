@@ -3,8 +3,8 @@ function Setup(){
     chrome.storage.sync.get(null, function(items){
         for (key in items) {
             // "Snibbit - " is the identifier for elements of the Chrome extension
-            var cutText = key;
-            var titleValue;
+            let cutText = key;
+            let titleValue;
             if (Array.isArray(items[key]) && items[key].length == 3 && items[key][2] == "Snibbit"){
                 if (items[key][0] === ""){
                     titleValue = "#NO_TITLE "
@@ -20,11 +20,11 @@ Setup();
 
 // Creates the tabs of snippet informationt that populates the ul element
 function CreateSection(Snippet, Title, link, keyValue) {
-    var newSection = document.createElement("li")
+    let newSection = document.createElement("li")
     newSection.id = keyValue
-    var titleScript = document.createElement("b")
-    var codeHolder = document.createElement("pre")
-    var codeSnippet = document.createElement("code")
+    let titleScript = document.createElement("b"); 
+    let codeHolder = document.createElement("pre")
+    let codeSnippet = document.createElement("code")
     var buttonDiv = document.createElement("div")
     buttonDiv.className = "buttonSection"
     var buttonDiv = document.createElement("div")

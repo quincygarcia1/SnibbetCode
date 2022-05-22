@@ -104,6 +104,7 @@ function HandleButtonPress() {
         }
 
     }
+    document.getElementsByClassName("s-searchbox")[0].value = "";
 }
 
 function findKeywords(section) {
